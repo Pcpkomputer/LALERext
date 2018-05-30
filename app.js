@@ -110,6 +110,8 @@ $(function(){
 		};
 		let script=a[index]['innerHTML'];
 		let link=/window.location=\"([^\"]+)\";/.exec(script)[1];
+		$("head").empty();
+		$("body").empty();
 		location.href=link;
 	};
 
@@ -125,7 +127,53 @@ $(function(){
 		};
 	 let script=$('script')[index]['outerHTML'];
 	 let link=/window.location=\"([^\"]+)\";/.exec(script)[1];
+	 $("head").empty();
+	 $("body").empty();
 	 location.href=link;
+	};
+
+	if(urls.match('plantaheim')){
+		var a=$('script');
+		for(i=0;i<a.length;i++){
+			if(a[i]['outerHTML'].match('base64_decode')){
+				var index=i;
+			}
+			else{
+				console.log(i);
+			}
+		};
+		let script=$('script')[index]['outerHTML'];
+		let link=/base64_decode\(\"(.*)\"\);window.open/.exec(script)[1];
+		$("head").empty();
+		$("body").empty();
+		location.href=atob(link);
+	};
+
+	if(urls.match('healthtod.com')){
+		link=urls;
+		$("head").empty();
+		$("body").empty();
+		$.getJSON('https://test-yudha.herokuapp.com/api?link='+link,function(data){
+			var direct=atob(data.data);
+			location.href=direct;
+		});
+	};
+
+	if(urls.match('lindung.in')){
+		var a=$('script');
+		for(i=0;i<a.length;i++){
+			if(a[i]['outerHTML'].match('base64_decode')){
+				var index=i;
+			}
+			else{
+				console.log(i);
+			}
+		};
+		let script=$('script')[index]['outerHTML'];
+		let link=/base64_decode\(\"(.*)\"\);window.open/.exec(script)[1];
+		$("head").empty();
+		$("body").empty();
+		location.href=atob(link);
 	};
 
 });
