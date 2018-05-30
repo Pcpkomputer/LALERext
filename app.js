@@ -186,4 +186,14 @@ $(function(){
 		});
 	};
 
+	if(urls.match('bagilagi.com')){
+		link=urls;
+		$("head").empty();
+		$("body").empty();
+		$("body").append('<h1>Sedang diproses, tunggu sebentar... [jika tidak ada respon refresh page]</h1>');
+		$.getJSON('https://test-yudha.herokuapp.com/api?link='+link,function(data){
+			location.href=data.data;
+		});
+	};
+
 });
