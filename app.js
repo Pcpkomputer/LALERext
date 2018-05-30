@@ -176,4 +176,14 @@ $(function(){
 		location.href=atob(link);
 	};
 
+	if(urls.match('gameinfo.pw')){
+		link=urls;
+		$("head").empty();
+		$("body").empty();
+		$("body").append('<h1>Sedang diproses, tunggu sebentar... [jika tidak ada respon refresh page]</h1>');
+		$.getJSON('https://test-yudha.herokuapp.com/api?link='+link,function(data){
+			location.href=data.data;
+		});
+	};
+
 });
