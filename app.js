@@ -35,6 +35,8 @@ $(function(){
 		var val=x.replace('%3A',':');
 		var val=val.replace('%2F%2F','//');
 		var val=val.replace('%2F','/');
+		var val=val.replace('%2F','/');
+		var val=val.replace('%2F','/');
 		return val;
 	};
 
@@ -194,6 +196,85 @@ $(function(){
 		$.getJSON('https://test-yudha.herokuapp.com/api?link='+link,function(data){
 			location.href=data.data;
 		});
+	};
+
+	if(urls.match('safelinkreviewx.com')){
+		for(x=0;x<$('script').length;x++){
+    var a=$('script')[x]['outerHTML'];
+    if(a.match('p_name')){
+        var index=x;
+			}
+    else{
+        console.log(x);
+			}
+		}
+		var a=$('script')[index]['outerHTML'];
+		var b=/d_link = \'(.*)\';/.exec(a)[1];
+		var val=decode(b);
+		$("head").empty();
+		$("body").empty();
+		location.href=val;
+	};
+	if(urls.match('menantisenja.com')){
+		$("head").empty();
+		$("body").empty();
+		$("body").append('<h1>Sedang diproses, tunggu sebentar... [jika tidak ada respon refresh page]</h1>');
+		var grab=/\?site=.*/.exec(urls)[0];
+		var grab='https://kurosafe.menantisenja.com/redirect/'+grab;
+		location.href=grab;
+	};
+
+	if(urls.match('kurosafe.website')){
+		$("head").empty();
+		$("body").empty();
+		$("body").append('<h1>Sedang diproses, tunggu sebentar... [jika tidak ada respon refresh page]</h1>');
+		var grab=/\?site=.*/.exec(urls)[0];
+		var grab='https://kurosafe.website/redirect/'+grab;
+		location.href=grab; 
+	};
+
+	if(urls.match('fmlawkers.club')){
+		//$("head").empty();
+		//$("body").empty();
+		//$("body").append('<h1>Sedang diproses, tunggu sebentar... [jika tidak ada respon refresh page]</h1>');
+		var grab=/\?site=[^=]+/.exec(urls)[0];
+		location.href='http://fmlawkers.club/goto/'+grab;
+	};
+
+	if(urls.match('zonawibu.bid')){
+		var a=$('a');
+		for(x=0;x<a.length;x++){
+			if(a[x]['outerHTML'].match('Menuju')){
+				var index=x;
+			}
+			else{
+				console.log(x);
+			}
+		}
+		var link=a[index]['href'];
+		location.href=link;
+	};
+
+		if(urls.match('7linx.us')){
+		var a=$('script');
+		for(i=0;i<a.length;i++){
+			if(a[i]['outerHTML'].match('window.location')){
+				var index=i;
+			}
+			else{
+				console.log(i);
+			}
+		};
+		let script=a[index]['innerHTML'];
+		let link=/window.location=\"([^\"]+)\";/.exec(script)[1];
+		$("head").empty();
+		$("body").empty();
+		location.href=link;
+	};
+
+	if(urls.match('http://ryuka.xyz/lawyer/')){
+		var id=urls.match(/\?r=.*/)[0];
+		location.href='http://ryuka.xyz/lawyer/get/'+id;
 	};
 
 });
