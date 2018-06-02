@@ -9,6 +9,8 @@
 	$('.iklanhead').empty();
 	$('.iklanpusat').empty();
 	$('.sidebar_right').html('');
+	$('s').remove();
+	$('b').remove();
 	};
 	///////////
 
@@ -22,14 +24,14 @@
 	$('.left').remove();
 	$('#btm_banner').remove();
 	$('.headads').remove();
+	$('s').remove();
+	$('b').remove();
 	};
 	///////////
 
 $(function(){
 
 	$('#bsamFB7sUI').remove();
-	$('s').remove();
-	$('b').remove();
 
 	function base64_encode(data) {
 
