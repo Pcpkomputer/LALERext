@@ -1,5 +1,11 @@
 //$('iframe').remove();
 
+$(function(){
+
+	if(location.href.match('elsfile.org')){
+	$('style').remove();
+	};
+
 	if(location.href.match('awsubs.co')){
 	///iklan////
 	$('#if_abd_media_1526894765').empty();
@@ -26,10 +32,9 @@
 	$('.headads').remove();
 	$('s').remove();
 	$('b').remove();
+	$('b')[0].remove();
 	};
 	///////////
-
-$(function(){
 
 	$('#bsamFB7sUI').remove();
 
@@ -356,6 +361,20 @@ function base64_decode(data) {
 	if(urls.match('http://ryuka.xyz/lawyer/')){
 		var id=urls.match(/\?r=.*/)[0];
 		location.href='http://ryuka.xyz/lawyer/get/'+id;
+	};
+
+	if(urls.match('animanganews.com')){
+		$('.header').remove();
+		$('#header').remove();
+		$('.title').remove();
+		$('.isi').remove();
+		$('.more').remove();
+		$('#footer').remove();
+		$('#converter-result').css('border', '0px', 'float', 'left')
+		$('#converter-result').css('margin-left','-140px')
+		$('#content-wrapper').css('margin-top','-50px')
+		$('.right').removeClass('right')
+
 	};
 
 });
