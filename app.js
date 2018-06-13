@@ -377,4 +377,34 @@ function base64_decode(data) {
 
 	};
 
+	if(location.href.match('tetew.info')){
+		var a=document.querySelectorAll('script');
+		for(x=0;x<a.length;x++){
+			if(a[x]['outerHTML'].match('window.location')){
+				var index=x;
+			}
+			else{
+				console.log('false');
+			}
+		}
+		var content=a[index]['outerHTML'];
+		var tautan=/window.location=\"([^\"]+)\"/.exec(content)[1];
+		location.href=tautan;
+	};
+
+	if(location.href.match('anjay.info')){
+		var a=document.querySelectorAll('script');
+		for(x=0;x<a.length;x++){
+			if(a[x]['outerHTML'].match('window.location')){
+				var index=x;
+			}
+			else{
+				console.log('false');
+			}
+		}
+		var content=a[index]['outerHTML'];
+		var tautan=/window.location=\"([^\"]+)\"/.exec(content)[1];
+		location.href=tautan;
+	};
+
 });
