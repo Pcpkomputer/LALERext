@@ -126,6 +126,34 @@ function base64_decode(data) {
 		return val;
 	};
 
+	var sss=document.querySelectorAll('script');
+	for(x=0;x<sss.length;x++){
+		if(sss[x]['outerHTML'].match('data-timer')){
+			let i=x;
+			let link=/\"([^\"]+)\",e=0,f=a/.exec(sss[i]['outerHTML'])[1];
+			location.href=link;
+			//alert('tes123');
+		}
+		if(sss[x]['outerHTML'].match('window.open')){
+			let i=x;
+			let link=/var a='(.*)';window.open/.exec(sss[i]['outerHTML'])[1];
+			location.href=link;
+		}
+		if(sss[x]['outerHTML'].match('base64_decode')){
+			let i=x;
+			let link=/base64_decode\(\"(.*)\"\);window.open/.exec(sss[i]['outerHTML'])[1];
+			location.href=atob(link);
+		}
+		if(sss[x]['outerHTML'].match('window.location')){
+			let i=x;
+			let link=/window.location=\"([^\"]+)\";/.exec(sss[i]['outerHTML'])[1];
+			location.href=link;
+		}
+		else{
+			console.log('nothing to do here');
+		}
+	}
+
 	let urls=location.href;
 	if(urls.match('94lauin')){
 		var a=$('script');
